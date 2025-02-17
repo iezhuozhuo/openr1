@@ -17,22 +17,22 @@ Supervised fine-tuning script for decoder language models.
 
 Usage:
 
-# One 1 node of 8 x H100s
-accelerate launch --config_file=recipes/accelerate_configs/zero3.yaml src/open_r1/sft.py \
-    --model_name_or_path Qwen/Qwen2.5-1.5B-Instruct \
-    --dataset_name HuggingFaceH4/Bespoke-Stratos-17k \
+# One 1 node of 4 x a100
+accelerate launch --config_file=recipes/accelerate_configs/ddp.yaml src/open_r1/sft.py \
+    --model_name_or_path /extrahome0/HF_models/Qwen2.5-Math-1.5B-Instruct \
+    --dataset_name /extrahome0/HF_datasets/Bespoke-Stratos-17k \
     --learning_rate 2.0e-5 \
     --num_train_epochs 1 \
     --packing \
     --max_seq_length 4096 \
     --per_device_train_batch_size 2 \
-    --gradient_accumulation_steps 8 \
+    --gradient_accumulation_steps 16 \
     --gradient_checkpointing \
     --bf16 \
     --logging_steps 5 \
     --eval_strategy steps \
     --eval_steps 100 \
-    --output_dir data/Qwen2.5-1.5B-Open-R1-Distill
+    --output_dir /extrahome0/Zhu/output/openr1/Qwen2.5-1.5B-Ist-Distill
 """
 
 import logging
