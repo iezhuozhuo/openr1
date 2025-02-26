@@ -25,6 +25,7 @@ from lighteval.metrics.dynamic_metrics import (
 from lighteval.tasks.lighteval_task import LightevalTaskConfig
 from lighteval.tasks.requests import Doc
 from lighteval.utils.language import Language
+from lighteval.pipeline import ParallelismManager, Pipeline
 
 
 latex_gold_metric = multilingual_extractive_match_metric(
@@ -132,7 +133,7 @@ math_500 = LightevalTaskConfig(
     evaluation_splits=["test"],
     few_shots_split=None,
     few_shots_select=None,
-    generation_size=32768,
+    generation_size=1024,
     metric=[latex_gold_metric],
     version=1,
 )

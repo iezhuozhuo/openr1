@@ -41,6 +41,7 @@ if stale_egg_info.exists():
 # IMPORTANT: all dependencies should be listed here with their version requirements, if any.
 #   * If a dependency is fast-moving (e.g. transformers), pin to the exact version
 _deps = [
+    "torch==2.5.1",
     "accelerate>=1.2.1",
     "bitsandbytes>=0.43.0",
     "datasets>=3.2.0",
@@ -54,6 +55,7 @@ _deps = [
     "isort>=5.12.0",
     "latex2sympy2_extended>=1.0.6",
     "liger_kernel==0.5.2",
+    # "lighteval @ git+https://github.com/huggingface/lighteval.git@86f62259f105ae164f655e0b91c92a823a742724#egg=lighteval[math]",
     "lighteval @ git+https://github.com/huggingface/lighteval.git@86f62259f105ae164f655e0b91c92a823a742724#egg=lighteval[math]",
     "math-verify==0.5.2",  # Used for math verification in grpo
     "packaging>=23.0",
@@ -63,9 +65,9 @@ _deps = [
     "ruff>=0.9.0",
     "safetensors>=0.3.3",
     "sentencepiece>=0.1.99",
-    "torch==2.5.1",
     "transformers @ git+https://github.com/huggingface/transformers.git@main",
     "trl @ git+https://github.com/huggingface/trl.git@main",
+    # "trl",
     "vllm==0.7.1",
     "wandb>=0.19.1",
 ]

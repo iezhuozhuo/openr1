@@ -3,7 +3,7 @@ NUM_GPUS=4
 #MODEL=/extrahome0/HF_models/DeepSeek-R1-Distill-Qwen-1.5B
 #MODEL=/extrahome0/HF_models/Qwen2.5-Math-1.5B-Instruct
 #MODEL=/extrahome0/HF_models/Qwen2.5-1.5B-Instruct
-MODEL=/extrahome0/Zhuo/output/openr1/Qwen2.5-1.5B-Ist-Distill
+MODEL=/extrahome0/Zhuo/output/openr1/Qwen2.5-1.5B-ist-GRPO
 MODEL_ARGS="pretrained=$MODEL,dtype=bfloat16,data_parallel_size=$NUM_GPUS,max_model_length=32768,gpu_memory_utilisation=0.9"
 OUTPUT_DIR=data/evals/$MODEL
 
