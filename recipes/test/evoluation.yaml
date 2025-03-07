@@ -1,8 +1,14 @@
 
 
+# path
+#problem_path: /extrahome0/HF_datasets/s1k
+problem_path: simplescaling/s1K
+output_path: /extrahome0/Zhuo/output/evol_s1k/v1/
+
 # 外部vllm server配置信息
 base_url: "http://localhost:8000/v1" # vLLM服务的地址 端口1/2 8000/8012
 api_key: "EMPTY"  # 如果设置了API密钥需要填写
+model_path: "/extrahome0/HF_models/Qwen2.5-7B-Instruct"
 
 # 初始进化种群配置
 pop_size: 4
@@ -10,7 +16,19 @@ gen_responses_temp: 0.6
 max_response_len: 2048
 gen_responses_prompt: "/extrahome0/Zhuo/code/open-r1/recipes/test/gen_resp.txt"
 
-model_path: "/extrahome0/HF_models/Qwen2.5-7B-Instruct"
+# crossover
+gen_critic_temp: 0.6
+max_critic_len: 2048
+critic_prompt: "/extrahome0/Zhuo/code/open-r1/recipes/test/critic.txt"
 
+gen_author_temp: 0.6
+max_author_len: 2048
+author_prompt: "/extrahome0/Zhuo/code/open-r1/recipes/test/author.txt"
 
+# mutation
+gen_mutation_temp: 0.6
+max_mutation_len: 2048
+mutation_prompt: "/extrahome0/Zhuo/code/open-r1/recipes/test/mutation.txt"
 
+# 进化配置
+iter_num: 3
