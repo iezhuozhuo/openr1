@@ -1,27 +1,24 @@
 from datasets import load_dataset
-import sys
-sys.path.append("/extrahome0/Zhuo/code/open-r1")
-from src.evol.fitness import extract_answer
 
 # data = load_dataset('/extrahome0/HF_datasets//NuminaMath-TIR')
 # for split, split_dataset in data.items():
 #     split_dataset.to_json(f'/code/Research_with_zhuo/reasoning/GA/NuminaMath-TIR-{split}.json')
 
 
-ds = load_dataset("simplescaling/s1K")["train"]
-cnt = 0
-gt_cnt = 0
-for idx in range(len(ds)):
-    data = ds[idx]["metadata"]
-    gt_ans = extract_answer(ds[idx]["attempt"])
-    if gt_ans:
-        gt_cnt += 1
-    else:
-        data = eval(ds[idx]["metadata"])
-        if "answer" in data:
-            cnt += 1
-            print(data["answer"])
-print(gt_cnt, cnt, len(ds))
+# ds = load_dataset("simplescaling/s1K")["train"]
+# cnt = 0
+# gt_cnt = 0
+# for idx in range(len(ds)):
+#     data = ds[idx]["metadata"]
+#     gt_ans = extract_answer(ds[idx]["attempt"])
+#     if gt_ans:
+#         gt_cnt += 1
+#     else:
+#         data = eval(ds[idx]["metadata"])
+#         if "answer" in data:
+#             cnt += 1
+#             print(data["answer"])
+# print(gt_cnt, cnt, len(ds))
 #
 
 # from src.open_r1.rewards import accuracy_reward, format_reward

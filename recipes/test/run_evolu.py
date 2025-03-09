@@ -19,6 +19,7 @@ from src.evol.fitness import extract_answer
 @dataclass
 class EvolutionArguments:
     config_path: Optional[str] = field(default=None, metadata={"help": "The configuration file to use."})
+    order: Optional[str] = field(default="+", metadata={"help": "倒序还是正常顺序."})
 
 
 def main():
@@ -50,7 +51,7 @@ def main():
     )
 
     # 加载预测数据
-    output_file = os.path.join(args.output_path, "evol_s1k.pkl")
+    output_file = os.path.join(args.output_path, f"evol_s1k_{args.order}.pkl")
     if os.path.isfile(output_file):
         with open(output_file, "rb") as file:
             dps = pickle.load(file)
@@ -61,8 +62,16 @@ def main():
     logger.debug(f"Reuse {reuse_idx} data in {output_file}")
 
     train_data = load_dataset(args.problem_path)["train"]
-    for idx in range(len(train_data)):
-        if idx < reuse_idx:
+    if args.order == "-":
+        idxs = list(reversed(list(range(len(train_data)))))
+        reuse_idx = len(train_data) - reuse_idx
+    else:
+        idxs = list(range(len(train_data)))
+
+    for idx in idxs:
+        if args.order == "-" and idx > reuse_idx:
+            continue
+        elif args.order == "+" and idx < reuse_idx:
             continue
 
         logger.debug(f"处理第 {idx} 个问题")
